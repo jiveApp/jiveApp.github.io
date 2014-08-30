@@ -1,0 +1,87 @@
+/*  ------------------------------------------------------------
+    Intro section
+    ------------------------------------------------------------  */
+
+html,
+body {
+    height: 100%
+}
+
+#intro {
+    padding-top: 120px
+}
+
+@media (min-width: 481px) { 
+    #intro {
+        padding-top: 160px
+    }
+}
+
+.intro-copy {
+    padding-bottom: 80px
+}
+
+@media (min-width: 481px) { 
+    .intro-copy {
+        padding-bottom: 160px
+    }
+}
+
+.section {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+@media (min-width: 481px) { 
+    .section-title {
+        text-align: center
+    }
+}
+
+.background-image {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.background-image:after {
+    background-color: #11111a;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
+    z-index: 0;
+}
+
+.background-image.loaded:after {
+    background-color: rgba(17, 17, 26, 0.8)
+}
+
+.background-image > * {
+    position: relative;
+    z-index: 2;
+}
+
+.background-image h1,
+.background-image h2,
+.background-image h3,
+.background-image h4,
+.background-image h5,
+.background-image h6 {
+    color: #fbfbfb
+}
+
+.background-image h1 small,
+.background-image h2 small,
+.background-image h3 small,
+.background-image h4 small,
+.background-image h5 small,
+.background-image h6 small {
+    color: #a2adb7
+}

@@ -1,0 +1,320 @@
+/*  ------------------------------------------------------------
+    Navigation bar
+    ------------------------------------------------------------  */
+
+.navbar {
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    -webkit-transition: background-color 0.2s ease-in-out, opacity 0.4s 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out;
+    transition: background-color 0.2s ease-in-out, opacity 0.4s 0.4s ease-in-out, transform 0.4s ease-in-out;
+    z-index: 5;
+}
+
+.navbar.fixed {
+    position: fixed
+}
+
+.navbar.fixed[data-scrolling="true"] {
+    background-color: rgba(17, 17, 21, 0.95)
+}
+
+.open .navbar {
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+@media (max-width: 768px) { 
+    .navbar {
+        z-index: 4
+    }
+}
+
+.navbar-inner {
+    border-bottom: 1px solid rgba(139, 153, 165, 0.2);
+    padding: 20px 0;
+    -webkit-transition: border-bottom-color 0.2s ease-in-out, padding 0.2s ease-in-out;
+    transition: border-bottom-color 0.2s ease-in-out, padding 0.2s ease-in-out;
+}
+
+[data-scrolling="true"] .navbar-inner {
+    border-bottom-color: transparent;
+    padding: 10px 0;
+}
+
+.inverse .navbar-inner {
+    border-bottom-color: rgba(255, 255, 255, 0.2)
+}
+
+.navbar-logo {
+    border-bottom: 0;
+    color: #22222a;
+    font-size: 24px !important;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.navbar-logo:active,
+.navbar-logo:hover {
+    color: #fff
+}
+
+.inverse .navbar-logo {
+    color: #fbfbfb
+}
+
+@media (min-width: 481px) { 
+    .navbar-logo {
+        font-size: 30px !important
+    }
+}
+
+@media (max-width: 768px) { 
+    .navbar-logo {
+        position: relative;
+        top: -2px;
+    }
+}
+
+.navbar-nav-toggle {
+    background: none;
+    border: 0;
+    display: block;
+    padding: 6px 5px 5px;
+}
+
+.navbar-nav-toggle .icon-bar {
+    background-color: #22222a;
+    border-radius: 1px;
+    display: block;
+    height: 3px;
+    width: 24px;
+}
+
+.navbar-nav-toggle .icon-bar + .icon-bar {
+    margin-top: 4px
+}
+
+.inverse .navbar-nav-toggle .icon-bar {
+    background-color: #f4f4f4
+}
+
+.navbar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-nav ul li a:not(.button) {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    border-bottom: 0;
+    display: block;
+}
+
+.navbar-nav ul li a:not(.button) u {
+    border-bottom-color: rgba(255, 255, 255, 0.2)
+}
+
+.navbar-nav ul li a:not(.button).active,
+.navbar-nav ul li a:not(.button):focus,
+.navbar-nav ul li a:not(.button):hover {
+    border-bottom-color: rgba(255, 255, 255, 0.4);
+    color: white;
+}
+
+.navbar-nav ul li a:not(.button).active u,
+.navbar-nav ul li a:not(.button):focus u,
+.navbar-nav ul li a:not(.button):hover u {
+    border-bottom-color: rgba(255, 255, 255, 0.4)
+}
+
+@media (max-width: 768px) { 
+    .navbar-nav {
+        margin: 20px -20px 0
+    }
+}
+
+@media (max-width: 768px) and (min-width: 481px) { 
+    .navbar-nav {
+        margin: 20px -30px 0
+    }
+}
+
+@media (max-width: 768px) { 
+    .navbar-nav ul li {
+        display: block
+    }
+
+    .navbar-nav ul li a,
+    .navbar-nav ul li .button {
+        padding: 10px 20px
+    }
+}
+
+@media (max-width: 768px) and (min-width: 481px) { 
+    .navbar-nav ul li a,
+    .navbar-nav ul li .button {
+        padding: 10px 30px
+    }
+}
+
+@media (max-width: 768px) { 
+    .navbar-nav ul li .button {
+        border-radius: 0;
+        font-weight: normal;
+        margin-top: 10px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 769px) { 
+    .navbar-nav ul {
+        font-size: 0
+    }
+
+    .navbar-nav ul > * {
+        font-size: 1rem;
+        display: inline-block;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 480px) { 
+    .navbar-nav ul > .margin + .margin {
+        margin-top: 0
+    }
+}
+
+@media (min-width: 769px) { 
+    .navbar-nav ul li {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .navbar-nav ul li a {
+        font-size: 16px;
+        margin: 5px 20px;
+    }
+
+    .navbar-nav ul li .button {
+        margin: 0 20px;
+        padding: 5px 15px;
+    }
+
+    .navbar-nav ul li:last-child .button {
+        margin-right: 0
+    }
+
+    .navbar-nav ul li:first-child .button {
+        margin-left: 0
+    }
+}
+
+/*  ------------------------------------------------------------
+    Responsive navbar navigation
+    This is separated from navbar for readability
+    ------------------------------------------------------------  */
+
+@media (min-width: 769px) { 
+    .navbar-inner {
+        font-size: 0;
+        text-align: justify;
+    }
+
+    .navbar-inner > * {
+        font-size: 1rem;
+        display: inline-block;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 480px) { 
+    .navbar-inner > .margin + .margin {
+        margin-top: 0
+    }
+}
+
+@media (min-width: 769px) { 
+    html[lang='\en'] .navbar-inner {
+        font-size: 0.04px
+    }
+
+    .navbar-inner > * {
+        text-align: left
+    }
+
+    .navbar-inner:after {
+        content: '';
+        display: inline-block;
+        width: 100%;
+    }
+
+    .navbar-inner > * {
+        vertical-align: middle
+    }
+}
+
+@media (max-width: 768px) { 
+    .navbar-header {
+        font-size: 0;
+        text-align: justify;
+    }
+
+    .navbar-header > * {
+        font-size: 1rem;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 768px) and (max-width: 480px) { 
+    .navbar-header > .margin + .margin {
+        margin-top: 0
+    }
+}
+
+@media (max-width: 768px) { 
+    html[lang='\en'] .navbar-header {
+        font-size: 0.04px
+    }
+
+    .navbar-header > * {
+        text-align: left
+    }
+
+    .navbar-header:after {
+        content: '';
+        display: inline-block;
+        width: 100%;
+    }
+
+    .navbar-header > * {
+        vertical-align: middle
+    }
+}
+
+@media (min-width: 769px) { 
+    .navbar-header {
+        display: inline-block
+    }
+}
+
+@media (min-width: 769px) { 
+    .navbar-nav-toggle {
+        display: none
+    }
+}
+
+@media (max-width: 768px) { 
+    .navbar-nav {
+        display: none
+    }
+}
+
+@media (min-width: 769px) { 
+    .navbar-nav {
+        display: inline-block !important
+    }
+}
