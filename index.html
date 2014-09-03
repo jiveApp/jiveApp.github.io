@@ -5,31 +5,16 @@
     <title>Jive</title>
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/peeky.css">
-	
     <link rel="shortcut icon" href="img/jiveIcon.png">
  
- <style>
- a {
-     text-decoration: overline;
- }
-
- h2 {
-     text-decoration: line-through;
- }
-
- h3 {
-     text-decoration: underline;
- }
- </style>
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
  
+ 	<script type="text/javascript">
+   		Parse.initialize("4rXNZNyMoWXww2FQnsVtMqzQCbJQEQdYIszvlURz", "NbAwUgzLe0IqMpo1O6SoEz4fBgTqSy5I9HzlfwZg");
+ 	</script> 
   </head>
   
   <body>
-
-	  <!-- Home -->	
-  		<section class="clear-it" id="home">
-
-
 
 			<!-- NAV BAR -->
 			<div class="inverse navbar">
@@ -55,7 +40,7 @@
 		                            <li class="facebook" title="Share link on Facebook">Share</li>
 		                            <li class="twitter" title="Share link on Twitter">Tweet</li>
 		                            <li class="plusone" title="Share link on Google+">+1</li>
-									<li class="contact"><a style="text-decoration: underline"href="#">Contact</a></li>
+									<li class="contact"><a class="contact-toggle" style="text-decoration:underline" href="#">Contact</a></li>
 										
 		                        </ul>
 		                    </nav><!-- .navbar-nav -->
@@ -66,20 +51,20 @@
 			<!-- SPLASH -->
 			<div class="content-wrapper">
 
-			            <div id="intro" class="background-image section loaded">
+			            <div id="intro" class="background-image section">
 			                <div class="container">
 
 			                    <div class="vertically-centered grid">
 			                        <div class="tablet-12 desktop-6">
 			                            <div class="intro-copy">
-			                                <img class="logo" src="img/jiveIcon.png">
+			                                <img class="logo" src="img/jiveIcon.png" alt="icon">
 			                                <h1>
 												Experience music like never before
 			                                    <!--Discover new music like never before.-->
 			                                </h1>
 
 											<div class="button-group">
-			                                    <a class="large primary button" href="https://itunes.apple.com/us/app/jive-for-ios/id911948088?ls=1&mt=8">Download now</a>
+			                                    <a class="large primary button" href="https://itunes.apple.com/us/app/jive-for-ios/id911948088?ls=1&amp;mt=8">Download now</a>
 			                                 </div>
 
 			                            </div>
@@ -92,7 +77,6 @@
 			                </div><!-- .container -->
 
 			            </div><!-- .section -->       
-			   </div>
 			
 			
 			<div id="content" class="content">
@@ -159,6 +143,7 @@
 
 			                </div><!-- .container -->
 							
+							<!-- Testimonials here -->
 
 			                <div class="footer">
 			                    <div class="container">
@@ -174,44 +159,43 @@
 			                            </div>
 			                            
 			                            <div class="small margin">
-			                                <a class="large primary button" href="https://itunes.apple.com/us/app/jive-for-ios/id911948088?ls=1&mt=8">Download Now</a>
+			                                <a class="large primary button" href="https://itunes.apple.com/us/app/jive-for-ios/id911948088?ls=1&amp;mt=8">Download Now</a>
 			                            </div>
 
 			                        </div>
 
 			                        <hr>
-
-									<!--
+									
 			                        <div class="vertically-centered justified grid">
 
 			                            <div class="tiny margin" style="text-align: center;">
-			                                © 2014 Oduwa Edo-Osagie ~ Special Thanks to Peeky Limited
+			                                © 2014 Oduwa Edo-Osagie <!--~ Special Thanks to Peeky Limited-->
 			                            </div>
 
-			                        </div>--><!-- .grid -->
+			                        </div><!-- .grid -->
 
 			                    </div>
 			                </div><!-- .footer -->
-
 			            </div><!-- .content-inner-wrapper -->
 			        </div><!-- .content-wrapper -->
 
-  		</section>	
 
-			                            <div  style="text-align: center;">
-			                                © 2014 Oduwa Edo-Osagie <!--~ Special Thanks to Peeky Limited -->
-			                            </div>
+	<!-- Contact form -->
+	        <div class="contact-wrapper" >
+	            <button type="button" id="closeContactButton" class="close contact-toggle" aria-hidden="true">&times;</button>
+	            <div class="contact-form-container">
+	                <form class="contact-form">
+	                    <div class="form-group">
+	                        <input id="contact-email" class="input" name="email" type="email" placeholder="Your email">
+	                    </div>
+	                    <div class="form-group">
+	                        <textarea id="contact-message" class="input" name="message" placeholder="Your message" rows="5"></textarea>
+	                    </div>
+	                    <button type="submit" class="primary button" data-loading-text="Sending...">Send</button>
+	                </form>
+	            </div>
+	        </div><!-- .contact-container -->
 
-	  <!--
-      <footer>
-        <a href="http://twitter.com/odieEd"><img src="img/twitter-wrap.png" alt="Twitter Logo" class="social-icon"></a>
-        <a href="http://facebook.com/oduwa.edoosagie"><img src="img/facebook-wrap.png" alt="Facebook Logo" class="social-icon"></a>
-        <p>&copy; 2014 Oduwa Edo-Osagie.</p>
-      </footer>-->
-	  
-    </div>
-	
-  	
 	
 	<!-- jQuery -->
 	        <script src="js/jquery-2.1.1.min.js"></script>

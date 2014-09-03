@@ -112,45 +112,39 @@ function contactFormHandler( event ) {
     // Prevent default form submission
     event.preventDefault();
 
-    // Cache form for later use
-    var $form = $( '.contact-form' ),
-        $submit = $form.find( '[type="submit"]' );
+    // Cache form for later use	
+	var $form = $( '.contact-form' ),
+    $submit = $form.find( '[type="submit"]' );
+	$submit.prop( 'disabled', true ).data( 'original-text', $submit.text() ).text( $submit.data( 'loading-text' ) );
+	
+	// get all the inputs into an array.
+	var $inputs = $('.contact-form :input');
 
-    $submit.prop( 'disabled', true ).data( 'original-text', $submit.text() ).text( $submit.data( 'loading-text' ) );
+	// get an associative array of just the values.
+	var values = {};
+	$inputs.each(function() {
+		values[this.name] = $(this).val();
+	});
 
-    // Send ajax request
-    $.ajax( {
-        url: 'http://s190710.gridserver.com/includes/functions.php',
-        type: 'post',
-        dataType: 'json',
-        data: $form.serialize() + '&action=contact',
-        success: function( msg ) {
+	console.log(values["email"]);
+	
+	var Feedback = Parse.Object.extend("Feedback");
+	var feedback = new Feedback();
+	feedback.set("email", values["email"]);
+	feedback.set("message", values["message"]);
+	feedback.save().then(function(object) {	
+	  $submit.prop( 'disabled', false ).text( $submit.data( 'original-text' ) );	
+	  
+	  // Confirmation message
+	  alert("Your message has been sent");
+	  
+	  // close contact section
+	  $("#closeContactButton").trigger( "click" );
+	  
+	  // Reset form values
+	  $form.get(0).reset();
+	});
 
-            $submit.prop( 'disabled', false ).text( $submit.data( 'original-text' ) );
-
-            // This needs heavy optimization
-            var helperClass = 'helper',
-                $helperElement = $( '<p class="' + helperClass + '">' + msg.message + '</p>' ),
-                $form_control = $form.find( '[name="' + msg.field + '"]' ),
-                $form_group = $form_control.closest( '.form-group' );
-
-            $form_group.removeClass( function( index, css ) {
-                return ( css.match( /\bhas-\S+/g ) || [] ).join( ' ' );
-            } ).addClass( 'has-' + msg.status );
-
-            if ( $form_group.find( '.' + helperClass ).length ) {
-                $form_group.find( '.' + helperClass ).text( msg.message );
-            }
-            else {
-                if ( $form_control.parent( '.input-group' ).length ) {
-                    $helperElement.insertAfter( $form_control.parent( '.input-group' ) );
-                }
-                else {
-                    $helperElement.insertAfter( $form_control );
-                }
-            }
-        }
-    } );
 }
 
 
@@ -171,37 +165,4 @@ function subscriptionFormHandler( event ) {
 
     $submit.prop( 'disabled', true ).data( 'original-text', $submit.text() ).text( $submit.data( 'loading-text' ) );
 
-    // Send ajax request
-    $.ajax( {
-        url: 'http://s190710.gridserver.com/includes/functions.php',
-        type: 'post',
-        dataType: 'json',
-        data: $form.serialize() + '&action=newsletter',
-        success: function( msg ) {
-
-            $submit.prop( 'disabled', false ).text( $submit.data( 'original-text' ) );
-
-            // This needs heavy optimization
-            var helperClass = 'helper',
-                $helperElement = $( '<p class="' + helperClass + '">' + msg.message + '</p>' ),
-                $form_control = $form.find( '[name="' + msg.field + '"]' ),
-                $form_group = $form_control.closest( '.form-group' );
-
-            $form_group.removeClass( function( index, css ) {
-                return ( css.match( /\bhas-\S+/g ) || [] ).join( ' ' );
-            } ).addClass( 'has-' + msg.status );
-
-            if ( $form_group.find( '.' + helperClass ).length ) {
-                $form_group.find( '.' + helperClass ).text( msg.message );
-            }
-            else {
-                if ( $form_control.parent( '.input-group' ).length ) {
-                    $helperElement.insertAfter( $form_control.parent( '.input-group' ) );
-                }
-                else {
-                    $helperElement.insertAfter( $form_control );
-                }
-            }
-        }
-    } );
 }
